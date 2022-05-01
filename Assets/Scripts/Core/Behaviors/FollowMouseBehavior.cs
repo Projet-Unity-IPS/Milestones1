@@ -1,7 +1,4 @@
-﻿using System.Linq;
-using UnityEngine;
-
-public class FollowMouseBehavior : AgentBehaviour
+﻿public class FollowMouseBehavior : AgentBehaviour
 {
     public override Steering GetSteering()
     {

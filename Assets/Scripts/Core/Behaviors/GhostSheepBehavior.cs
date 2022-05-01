@@ -1,5 +1,4 @@
-﻿using System;
-using Game;
+﻿using Game;
 using UnityEngine;
 using UnityEngine.Serialization;
 using Random = System.Random;
@@ -15,9 +14,8 @@ namespace Core.Behaviors
         public GameObject centerCollider;
         private float _timeToWait = 0;
 
-        [FormerlySerializedAs("_isGhost")] public bool isGhost = false;
-
-
+        public bool isGhost = false;
+        
         public void FixedUpdate()
         {
             var dt = Time.fixedDeltaTime;
