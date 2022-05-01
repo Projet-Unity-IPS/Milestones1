@@ -17,6 +17,7 @@ public class CelluloAgentRigidBody : CelluloAgent
 
     protected override void FixedUpdate()
     {
+    
         if (steering.linear.sqrMagnitude == 0.0f)
             _rigidBody.velocity = Vector3.zero; 
         else
