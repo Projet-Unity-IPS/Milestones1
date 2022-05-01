@@ -21,6 +21,8 @@ public class ScanPanel : MonoBehaviour
 
     //!<Reference to the scan button
     public Button _scanButton;
+    //!<Reference to the Custom Addition UI
+    public InputField _inputCelluloField;
 
     private float refreshTimer = Config.REFRESH_TIMER;
 
@@ -71,10 +73,13 @@ public class ScanPanel : MonoBehaviour
 	/// </summary>
     public void ClearList()
     {
+#if !(UNITY_EDITOR_OSX || UNITY_STANDALONE_OSX)
         _scanner.ClearRobotsFound();
+#endif
         foreach (KeyValuePair<string, GameObject> entry in _celluloScannedList)
         {
-            Destroy(_celluloScannedList[entry.Key]);
+            if(!entry.Value.GetComponent<ScannerListElement>()._isConnected)
+                Destroy(_celluloScannedList[entry.Key]);
         }
         _celluloScannedList.Clear();
     }
@@ -196,6 +201,15 @@ public class ScanPanel : MonoBehaviour
 
             SortListPanel();
         }
+    }
+
+    private void AddRobot(int nb){
+        if(CelluloManager._celluloMacAddresses.ContainsKey(nb))
+            AddRobot(CelluloManager._celluloMacAddresses[nb]);
+    }
+
+    public void AddCustomRobot(){
+        AddRobot(int.Parse(_inputCelluloField.text));
     }
 
 	/// <summary>

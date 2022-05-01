@@ -15,10 +15,6 @@ namespace Core.Behaviors
         public InputKeyboard inputKeyboard;
         public GameObject gameManager;
 
-        private void Start()
-        {
-        }
-
         public override Steering GetSteering()
         {
             Steering steering = new Steering();

@@ -17,12 +17,14 @@ namespace Core.Behaviors
 
         [FormerlySerializedAs("_isGhost")] public bool isGhost = false;
 
-        public override void FixedUpdate()
+
+        public void FixedUpdate()
         {
-            base.FixedUpdate();
             var dt = Time.fixedDeltaTime;
             var robots = new[]
-                { player1.GetComponent<CelluloAgent>()._celluloRobot, player2.GetComponent<CelluloAgent>()._celluloRobot };
+            {
+                player1.GetComponent<CelluloAgent>()._celluloRobot, player2.GetComponent<CelluloAgent>()._celluloRobot
+            };
             foreach (var r in robots)
                 r?.SetCasualBackdriveAssistEnabled(!isGhost);
 
